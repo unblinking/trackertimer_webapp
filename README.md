@@ -1,4 +1,4 @@
-# ⏲ trackerTimer Web App  
+# ⏱ trackerTimer Web App  
 
 This is the source code repository for the trackerTimer Web Application.  
 

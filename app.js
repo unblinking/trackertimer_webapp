@@ -3,61 +3,121 @@
 'use strict'
 
 /**
- * The application entry point.
- * @author {@link https://github.com/jmg1138 jmg1138}
+ * Express.js front-end for the trackerTimer.
+ * @author jmg1138 {@link https://github.com/jmg1138 jmg1138}
  */
 
 /**
- * Require the 3rd party modules that will be used.
+ * 3rd party modules that will be used.
  * @see {@link https://github.com/expressjs/express express}
- * @see {@link https://github.com/helmetjs/helmet helmet}
- * @see {@link https://github.com/petkaantonov/bluebird bluebird}
+ * @see {@link https://nodejs.org/api/http.html http}
  * @see {@link https://nodejs.org/api/path.html path}
  */
 const express = require('express')
-const helmet = require('helmet')
-const P = require('bluebird')
+const http = require('http')
 const path = require('path')
 
 /**
- * Require the local modules/functions that will be used.
+ * Instantiate the express.js application.
+ * @param {Object} bundle The main bundle of shared references.
  */
-const routes = require('./routes.js')
+function expressInstance (bundle) {
+  return new Promise(resolve => {
+    bundle.express = express()
+    resolve()
+  })
+}
 
 /**
- * Define the port for the application entry point to listen on.
- * Use port 1138 if environmental variable PORT is not defined.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt MDN JavaScript parseInt}
+ * Configure the express.js application.
+ * Define all express configurations here (except routes, define routes last).
+ * @param {Object} bundle The main bundle of shared references.
  */
-const port = parseInt(process.env.PORT, 10) || 1138
+function expressConfigure (bundle) {
+  return new Promise(resolve => {
+    bundle.express.use(express.static(path.join(__dirname, '/public')))
+    bundle.express.locals.pretty = true // Pretty html.
+    bundle.express.set('views', './views')
+    bundle.express.set('view engine', 'pug')
+    resolve()
+  })
+}
 
 /**
- * Define all app configurations here except routes (define routes last).
- * Instantiate the Express application.
+ * Define the express.js routes.
+ * @param {Object} bundle The main bundle of shared references.
+ * @see {@link https://expressjs.com/en/guide/routing.html Express routing}
  */
-const app = express()
-app.use(helmet())
-app.set('views', './dist')
-app.set('view engine', 'html')
+function expressRoutes (bundle) {
+  return new Promise(resolve => {
+    bundle.express.get('/', (req, res) => res.render('index'))
+    resolve()
+  })
+}
 
 /**
- * Define routes last, after all other configurations.
- * @param {object} app - The Express application instance.
+ * Define the express.js error handling middleware.
+ * @param {Object} bundle The main bundle of shared references.
  */
-routes(app)
+function expressErrors (bundle) {
+  return new Promise(resolve => {
+    bundle.express.use(function (req, res, next) {
+      res.status(404).render('404')
+    })
+    bundle.express.use(function (err, req, res, next) {
+      res.status(500).send('Something broke!')
+    })
+    resolve()
+  })
+}
 
 /**
- * Listen for connections on the specified port.
- * @see {@link https://expressjs.com/en/api.html#app.listen Express API app.listen}
+ * Instantiate the http server.
+ * @param {Object} bundle The main bundle of shared references.
  */
-app.listen(port, () =>
-  console.log(`trackerTimer Web App listening on port ${port}.`)
-).on('error', err => console.log(err))
+function serverInstance (bundle) {
+  return new Promise(resolve => {
+    bundle.server = http.Server(bundle.express)
+    resolve()
+  })
+}
 
 /**
- * Define error-handling middleware after app and route configurations.
+ * Listen for http server connections.
+ * @param {Object} bundle The main bundle of shared references.
+ * @see {@link https://expressjs.com/en/api.html#app.listen Express app.listen}
  */
-app.use((req, res, next) => res.send('four, oh four!'))
-app.use((err, req, res, next) => res.send(err.message))
+function serverListen (bundle) {
+  return new Promise(resolve => {
+    const port = parseInt(process.env.PORT, 10) || 1138
+    bundle.server.listen(port, () => {
+      console.log(`Server listening on port ${port}`)
+      resolve()
+    })
+  })
+}
 
-module.exports = app // For testing with supertest
+/**
+ * Create the web front-end parts in proper order.
+ * @param {Object} bundle The main bundle of shared references.
+ */
+async function create (bundle) {
+  await expressInstance(bundle)
+  await expressConfigure(bundle)
+  await expressRoutes(bundle)
+  await expressErrors(bundle)
+  await serverInstance(bundle)
+  await serverListen(bundle)
+}
+exports.create = create
+
+/**
+ * The main "bundle" object, which holds copies of references, to be passed to
+ * other functions. I'm creating it here with undefined (placeholder) names that
+ * will be assigned as the application starts up.
+ */
+var bundle = {
+  "express": undefined, // Express.js web application framework.
+  "server": undefined // Http server for Express.js.
+}
+create(bundle)

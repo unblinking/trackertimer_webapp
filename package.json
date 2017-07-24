@@ -2,7 +2,6 @@
   "name": "trackerTimer",
   "version": "0.0.1",
   "description": "Website tracker timer.",
-  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nothingworksright/trackertimer_webapp.git"
@@ -10,23 +9,21 @@
   "author": "jmg1138 https://github.com/jmg1138",
   "license": "MIT",
   "readme": "README.md",
-  "bugs": {
-    "url": "https://github.com/nothingworksright/trackertimer_webapp/issues"
+  "engines": {
+    "node": "8.1.3"
   },
-  "homepage": "https://github.com/nothingworksright/trackertimer_webapp#readme",
   "dependencies": {
-    "bluebird": "3.5.0",
     "express": "4.15.3",
-    "helmet": "3.6.1",
-    "lodash": "4.17.4"
+    "helmet": "^3.8.0",
+    "pug": "^2.0.0-rc.2"
   },
   "devDependencies": {
     "codecov": "2.2.0",
     "env-test": "1.0.0",
-    "eslint": "4.1.1",
+    "eslint": "4.3.0",
     "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.6.1",
-    "eslint-plugin-node": "5.1.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-node": "5.1.1",
     "eslint-plugin-promise": "3.5.0",
     "eslint-plugin-standard": "3.0.1",
     "istanbul": "0.4.5",
@@ -34,10 +31,10 @@
     "npm-check-updates": "2.12.1",
     "should": "11.2.1",
     "supertest": "3.0.0",
-    "webpack": "3.0.0"
+    "webpack": "3.3.0"
   },
   "scripts": {
-    "build": "webpack",
+    "postinstall": "webpack",
     "pretest": "echo \"Checking for available dependency updates\" && ncu",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
     "posttest": "./node_modules/.bin/codecov",

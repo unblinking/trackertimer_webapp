@@ -34,7 +34,7 @@
     "webpack": "3.3.0"
   },
   "scripts": {
-    "postinstall": "webpack",
+    "build": "webpack",
     "pretest": "echo \"Checking for available dependency updates\" && ncu",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
     "posttest": "./node_modules/.bin/codecov",

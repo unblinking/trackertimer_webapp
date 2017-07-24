@@ -8,6 +8,10 @@ The trackerTimer Web Application uses the [trackerTimer API Server](https://gith
 
 ℹ **Note**: *trackerTimer is an alpha, open-source project. This project is not yet a minimum viable product.*  
 
+# Getting Started  
+
+[Click here to open the trackerTimer Web App](https://trackertimerwebapp.herokuapp.com/)  
+
 ## Show your support  
 
 Support this project by [making a pledge via Patreon](https://www.patreon.com/jmg1138).  

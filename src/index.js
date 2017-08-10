@@ -1,3 +1,5 @@
+/* global fetch:false */
+
 let button = document.getElementById('submit')
 
 function showLoading () {

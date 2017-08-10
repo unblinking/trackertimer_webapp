@@ -67,6 +67,8 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+/* global fetch:false */
+
 let button = document.getElementById('submit')
 
 function showLoading () {

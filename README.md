@@ -1,6 +1,7 @@
 # ⏱ trackerTimer Web App  
 
-This is the source code repository for the trackerTimer Web Application.  
+This is the source code repository for the [trackerTimer Web App](https://trackertimerwebapp.herokuapp.com/).  
+This web app consumes the [trackerTimer API server](https://trackertimerapi.herokuapp.com/)  
 
 # About  
 

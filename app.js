@@ -3,17 +3,19 @@
 'use strict'
 
 /**
- * Express.js front-end for the trackerTimer.
+ * Expressjs front-end for the trackerTimer.
  * @author jmg1138 {@link https://github.com/jmg1138 jmg1138}
  */
 
 /**
- * 3rd party modules that will be used.
+ * Modules that will be used.
  * @see {@link https://github.com/expressjs/express express}
+ * @see {@link https://github.com/helmetjs helmet}
  * @see {@link https://nodejs.org/api/http.html http}
  * @see {@link https://nodejs.org/api/path.html path}
  */
 const expressjs = require('express')
+const helmet = require('helmet')
 const http = require('http')
 const path = require('path')
 
@@ -34,6 +36,7 @@ function expressInstance () {
  */
 function expressConfigure (express) {
   return new Promise(resolve => {
+    express.use(helmet())
     express.use(expressjs.static(path.join(__dirname, '/public')))
     express.locals.pretty = true // Pretty html.
     express.set('views', './views')

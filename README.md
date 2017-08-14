@@ -1,18 +1,28 @@
 # ⏱ trackerTimer Web App  
 
+Network analysis of tracking elements.  
+
 This is the source code repository for the [trackerTimer Web App](https://trackertimerwebapp.herokuapp.com/).  
-This web app consumes the [trackerTimer API server](https://trackertimerapi.herokuapp.com/)  
+This web app consumes the [trackerTimer API Server](https://trackertimerapi.herokuapp.com/).  
 
-# About  
+## Getting Started  
 
-The trackerTimer Web Application uses the [trackerTimer API Server](https://github.com/nothingworksright/trackertimer_api).  
+[Click here to open the trackerTimer Web App](https://trackertimerwebapp.herokuapp.com/).  
 
-ℹ **Note**: *trackerTimer is an alpha, open-source project. This project is not yet a minimum viable product.*  
+Simply and easily deploy this Web App to Heroku using this button:  
 
-# Getting Started  
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
 
-[Click here to open the trackerTimer Web App](https://trackertimerwebapp.herokuapp.com/)  
+## About  
 
-## Show your support  
+### Network Analysis  
+
+The trackerTimer Web Application consumes the [trackerTimer API Server](https://github.com/nothingworksright/trackertimer_api) to generate and display network analysis waterfall diagrams.  
+
+To generate a report, enter a URL into the URL field and click the Submit button. The report will be generated in the time it takes for the URL to load completely, and then you can review the results. Click the Start Over button to analyze a different URL.  
+
+ℹ **Note**: *trackerTimer is an alpha, open-source project.*  
+
+## Show Your Support  
 
 Support this project by [making a pledge via Patreon](https://www.patreon.com/jmg1138).  

@@ -1,0 +1,13 @@
+{
+  "name": "trackerTimer Web App",
+  "description": "Web app to provide network analysis of tracking elements.",
+  "keywords": [
+    "node",
+    "website",
+    "tracker",
+    "timer"
+  ],
+  "website": "https://github.com/nothingworksright/trackertimer_webapp/blob/master/README.md",
+  "repository": "https://github.com/nothingworksright/trackertimer_webapp",
+  "success_url": "/"
+}

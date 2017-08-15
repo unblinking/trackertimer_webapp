@@ -4,7 +4,7 @@
 
 /**
  * Expressjs front-end for the trackerTimer.
- * @author jmg1138 {@link https://github.com/jmg1138 jmg1138}
+ * @author {@link https://github.com/jmg1138 jmg1138}
  */
 
 /**
@@ -20,7 +20,7 @@ const http = require('http')
 const path = require('path')
 
 /**
- * Instantiate the express.js application.
+ * Instantiate the expressjs application.
  */
 function expressInstance () {
   return new Promise(resolve => {
@@ -30,7 +30,7 @@ function expressInstance () {
 }
 
 /**
- * Configure the express.js application.
+ * Configure the expressjs application.
  * Define all express configurations here (except routes, define routes last).
  * @param {Object} express The expressjs instance.
  */
@@ -63,10 +63,8 @@ function expressRoutes (express) {
  */
 function expressErrors (express) {
   return new Promise(resolve => {
-    express.use(function (req, res, next) {
-      res.status(404).render('404')
-    })
-    express.use(function (err, req, res, next) {
+    express.use((req, res, next) => res.status(404).render('four, oh four!'))
+    express.use((err, req, res, next) => {
       res.status(500).send('Something broke!')
       console.log(err.message)
     })
@@ -110,6 +108,6 @@ async function create () {
   let server = await serverInstance(express)
   await serverListen(server)
 }
-exports.create = create
+exports.create = create // For supertest
 
 create()

@@ -16,7 +16,8 @@
   "dependencies": {
     "express": "4.15.4",
     "helmet": "3.8.1",
-    "pug": "2.0.0-rc.3"
+    "pug": "2.0.0-rc.3",
+    "webpack": "3.3.0"
   },
   "devDependencies": {
     "codecov": "2.3.0",
@@ -31,8 +32,7 @@
     "mocha": "3.5.0",
     "npm-check-updates": "2.12.1",
     "should": "11.2.1",
-    "supertest": "3.0.0",
-    "webpack": "3.3.0"
+    "supertest": "3.0.0"
   },
   "scripts": {
     "build": "webpack",

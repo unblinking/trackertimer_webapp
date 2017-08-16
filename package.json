@@ -17,7 +17,7 @@
     "express": "4.15.4",
     "helmet": "3.8.1",
     "pug": "2.0.0-rc.3",
-    "webpack": "3.3.0"
+    "webpack": "3.5.5"
   },
   "devDependencies": {
     "codecov": "2.3.0",
@@ -35,8 +35,8 @@
     "supertest": "3.0.0"
   },
   "scripts": {
-    "build": "webpack",
     "postinstall": "npm shrinkwrap --dev && npm run build",
+    "build": "webpack",
     "pretest": "echo \"Checking for available dependency updates\" && ncu",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
     "posttest": "./node_modules/.bin/codecov",

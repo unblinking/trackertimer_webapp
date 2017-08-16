@@ -63,7 +63,7 @@ function expressRoutes (express) {
  */
 function expressErrors (express) {
   return new Promise(resolve => {
-    express.use((req, res, next) => res.status(404).render('four, oh four!'))
+    express.use((req, res, next) => res.status(404).send('four, oh four!'))
     express.use((err, req, res, next) => {
       res.status(500).send('Something broke!')
       console.log(err.message)

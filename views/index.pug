@@ -9,28 +9,19 @@ head
   )
 body
   br
-  .jumbotron.mx-auto.align-middle(
-    id='jumbotron',
-    display='block',
-    style='width: 400px;'
-  )
-    h1|trackerTimer
-    br
-    form.form-inline
-      .form-group
-        input.form-control.mr-2.mb-2(
+  .container
+    .display-1.mb-3|trackerTimer
+    .jumbotron.p-5.align-left(id='jumbotron')
+      form.form-group
+        label|URL
+        input.form-control(
           type='text',
           id='url',
-          placeholder='URL'
+          placeholder='e.g., http://www.nothingworksright.com/'
         )
-        button.btn.btn-primary.mr-2.mb-2(
-          id='submit'
-        )
-          |Submit
-    br
-    .small
-      |Enter a fully qualified URL (http or https) and click Submit.
-      |e.g., https://www.github.com/
+        br
+        button.btn.btn-primary(id='submit')|Submit
+    .display-4.mt-3|Enter a fully qualified URL (http or https) and click Submit.
 script(
   src='https://code.jquery.com/jquery-3.1.1.slim.min.js',
   integrity='sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n',

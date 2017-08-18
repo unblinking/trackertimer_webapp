@@ -81,8 +81,8 @@
 function formatApiUrl () {
   return new Promise(resolve => {
     let url = document.getElementById('url').value
-    let jb = document.getElementById('jumbotron')
-    jb.innerHTML = `&#9201; generating report ...`
+    let jumbotron = document.getElementById('jumbotron')
+    jumbotron.innerHTML = `<div class="progress-bar progress-bar-striped progress-bar-animated"></div><br>&#9201; generating report ...`
     resolve(`https://trackertimerapi.herokuapp.com/?url=${url}`)
   })
 }
@@ -133,8 +133,8 @@ function showError (message) {
   })
 }
 
-let button = document.getElementById('submit')
-button.onclick = () => formatApiUrl()
+let submitButton = document.getElementById('submit')
+submitButton.onclick = () => formatApiUrl()
   .then(apiUrl => { return requestData(apiUrl) })
   .then(json => {
     if (json.status === 'success') showData(json.output)

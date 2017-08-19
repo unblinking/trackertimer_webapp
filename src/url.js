@@ -47,7 +47,8 @@ function showData (output) {
     for (var i = 0, len = output.length; i < len; i++) {
       text += output[i] + '\n'
     }
-    document.body.innerHTML = `<div class='jumbotron mx-auto align-middle' display='block'><a class='btn btn-primary' href='/'>Click Here To Start Over</a><br><br><h1>Success! Below is the performance report.</h1><br><ul><li>If there were any errors during processing of the URL they will be listed first.</li><li>If there were no errors, the first information will be the configuration settings (hard coded for now), followed by elapsed load times for resources.</li><li>Below that will be the waterfall diagram of the waits and receipts of each requested resource.</li><li>Below the waterfall diagram are resource URLs, numbered to correspond to the rows of the diagram.</li></ul><br><hr><pre>${text}</pre></div>`
+    let loading = document.getElementById('loading')
+    loading.innerHTML = `<div class='jumbotron mx-auto align-middle' display='block'><a class='btn btn-primary' href='/'>Click Here To Start Over</a><br><br><h1>Success! Below is the performance report.</h1><br><ul><li>If there were any errors during processing of the URL they will be listed first.</li><li>If there were no errors, the first information will be the configuration settings (hard coded for now), followed by elapsed load times for resources.</li><li>Below that will be the waterfall diagram of the waits and receipts of each requested resource.</li><li>Below the waterfall diagram are resource URLs, numbered to correspond to the rows of the diagram.</li></ul><br><hr><pre>${text}</pre></div>`
     resolve()
   })
 }
@@ -58,7 +59,8 @@ function showData (output) {
  */
 function showError (message) {
   return new Promise(resolve => {
-    document.body.innerHTML = `<div class='jumbotron mx-auto align-middle' display='block'><a class='btn btn-primary' href='/'>Start Over</a><br><br><pre>${message}</pre></div>`
+    let loading = document.getElementById('loading')
+    loading.innerHTML = `<div class='jumbotron mx-auto align-middle' display='block'><a class='btn btn-primary' href='/'>Start Over</a><br><br><pre>${message}</pre></div>`
     resolve()
   })
 }

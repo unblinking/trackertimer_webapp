@@ -18,6 +18,7 @@ const expressjs = require('express')
 const helmet = require('helmet')
 const http = require('http')
 const path = require('path')
+const routes = require('./routes.js')
 
 /**
  * Instantiate the expressjs application.
@@ -52,7 +53,7 @@ function expressConfigure (express) {
  */
 function expressRoutes (express) {
   return new Promise(resolve => {
-    express.get('/', (req, res) => res.render('index'))
+    routes.router(express)
     resolve()
   })
 }

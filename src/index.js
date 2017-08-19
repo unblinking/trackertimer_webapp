@@ -5,7 +5,8 @@
 
 let submitButton = document.getElementById('submit')
 submitButton.onclick = () => {
+  let loc = location.href
   let url = document.getElementById('url').value
-  window.location.href = `http://127.0.0.1:1138/?url=${url}`
+  location.href = loc + `?url=${url}`
   return false
 }

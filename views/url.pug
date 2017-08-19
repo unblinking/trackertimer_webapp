@@ -10,10 +10,13 @@ body
         input.form-control(
           type='text',
           id='url',
-          placeholder='e.g., http://www.nothingworksright.com/'
+          value=url,
+          disabled
         )
         br
-        button.btn.btn-primary(id='submit')|Submit
-    .display-4.mt-3|Enter a fully qualified URL (http or https) and click Submit.
+        .progress-bar.progress-bar-striped.progress-bar-animated
+        br
+        p
+          |&#9201; Generating report ...
 include scripts
-script(src='index.js')
+script(src='url.js')

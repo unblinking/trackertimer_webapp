@@ -2,10 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    url: './src/url.js'
+  },
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
+    filename: '[name].js'
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin()

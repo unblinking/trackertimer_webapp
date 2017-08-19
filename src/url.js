@@ -27,7 +27,11 @@ function requestData (apiUrl) {
       resolve(JSON.parse(this.response))
     }
     function reqErr (err) {
-      alert(`Error during XMLHttpRequest: ${JSON.stringify(err)}`)
+      alert('had an error')
+      resolve({
+        'status': 'error',
+        'message': 'There was an error during the XMLHttpRequest: ' + JSON.stringify(err)
+      })
     }
     let req = new XMLHttpRequest()
     req.onload = reqListen

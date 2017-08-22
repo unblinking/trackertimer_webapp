@@ -50,8 +50,53 @@ function showData (output) {
     for (var i = 0, len = output.length; i < len; i++) {
       text += output[i] + '\n'
     }
+
+    // Get rid of the loading message.
     let loading = document.getElementById('loading')
-    loading.innerHTML = `<div class='jumbotron mx-auto align-middle' display='block'><a class='btn btn-primary' href='/'>Click Here To Start Over</a><br><br><h1>Success! Below is the performance report.</h1><br><ul><li>If there were any errors during processing of the URL they will be listed first.</li><li>If there were no errors, the first information will be the configuration settings (hard coded for now), followed by elapsed load times for resources.</li><li>Below that will be the waterfall diagram of the waits and receipts of each requested resource.</li><li>Below the waterfall diagram are resource URLs, numbered to correspond to the rows of the diagram.</li></ul><br><hr><pre>${text}</pre></div>`
+    loading.parentNode.removeChild(loading)
+
+    // Build up the HTML to show the data, then show it.
+    let container = document.createElement('div')
+    container.className = 'container'
+    let jumbotron = document.createElement('div')
+    jumbotron.className = 'jumbotron'
+    jumbotron.style.display = 'block'
+    let startOver = document.createElement('a')
+    startOver.className = 'btn btn-primary'
+    startOver.href = '/'
+    startOver.innerHTML = 'Click here to start over.'
+    startOver.title = 'Start Over'
+    let h1 = document.createElement('h1')
+    h1.innerHTML = 'Success! Below is the performance report'
+    let ul = document.createElement('ul')
+    let li1 = document.createElement('li')
+    li1.innerHTML = 'If there were any errors during processing of the URL they will be listed first.'
+    let li2 = document.createElement('li')
+    li2.innerHTML = 'If there were no errors, the first information will be the configuration settings (hard coded for now), followed by elapsed load times for resources.'
+    let li3 = document.createElement('li')
+    li3.innerHTML = 'Below that will be the waterfall diagram of the waits and receipts of each requested resource.'
+    let li4 = document.createElement('li')
+    li4.innerHTML = 'Below the waterfall diagram are resource URLs, numbered to correspond to the rows of the diagram.'
+    ul.appendChild(li1)
+    ul.appendChild(li2)
+    ul.appendChild(li3)
+    ul.appendChild(li4)
+    let hr = document.createElement('hr')
+    let pre = document.createElement('pre')
+    pre.innerHTML = text
+    let body = document.body
+    jumbotron.appendChild(startOver)
+    jumbotron.appendChild(document.createElement('br'))
+    jumbotron.appendChild(document.createElement('br'))
+    jumbotron.appendChild(h1)
+    jumbotron.appendChild(document.createElement('br'))
+    jumbotron.appendChild(ul)
+    jumbotron.appendChild(document.createElement('br'))
+    jumbotron.appendChild(hr)
+    jumbotron.appendChild(pre)
+    container.appendChild(jumbotron)
+    body.appendChild(container)
+
     resolve()
   })
 }

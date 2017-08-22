@@ -17,10 +17,11 @@ body
     id='loading'
   )
     .container
-      p()
-        .progress-bar.progress-bar-striped.progress-bar-animated
-        br
-        p
-          |&#9201; Generating report ...
+      .progress-bar.progress-bar-striped.progress-bar-animated(
+        height='100px'
+      )
+      br
+      .display-4
+        |&#9201; Generating report ...
 include scripts
 script(src='url.js')

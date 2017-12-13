@@ -22,7 +22,3 @@ The trackerTimer Web Application consumes the [trackerTimer API Server](https://
 To generate a report, enter a URL into the URL field and click the Submit button. The report will be generated in the time it takes for the URL to load completely, and then you can review the results. Click the Start Over button to analyze a different URL.  
 
 ℹ **Note**: *trackerTimer is an alpha, open-source project.*  
-
-## Show Your Support  
-
-Support this project by [making a pledge via Patreon](https://www.patreon.com/jmg1138).  
